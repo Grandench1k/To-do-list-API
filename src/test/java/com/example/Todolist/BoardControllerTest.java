@@ -48,7 +48,7 @@ public class BoardControllerTest {
     @Autowired
     BoardRepository boardRepository;
     String jwtToken;
-    List<Task> taskList = new ArrayList<>();
+    final List<Task> taskList = new ArrayList<>();
     @Autowired
     private TaskRepository taskRepository;
     @Autowired
@@ -70,7 +70,7 @@ public class BoardControllerTest {
     }
 
     @AfterEach
-    void tearDown() throws Exception {
+    void tearDown() {
         boardRepository.deleteAll();
         userRepository.deleteAll();
         taskRepository.deleteAll();

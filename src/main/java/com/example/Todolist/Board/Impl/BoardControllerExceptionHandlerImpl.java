@@ -36,9 +36,7 @@ public class BoardControllerExceptionHandlerImpl implements BoardControllerExcep
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         Map<String, String> map = new HashMap<>();
-        e.getBindingResult().getFieldErrors().forEach(fieldError -> {
-            map.put(fieldError.getField(), fieldError.getDefaultMessage());
-        });
+        e.getBindingResult().getFieldErrors().forEach(fieldError -> map.put(fieldError.getField(), fieldError.getDefaultMessage()));
         return ResponseEntity.badRequest().body(map);
     }
 
